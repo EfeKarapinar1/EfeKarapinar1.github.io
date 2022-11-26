@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Josefin+Sans:wght@600&display=swap');
 
 body{
     margin: 0;
@@ -8,42 +8,78 @@ body{
 #container{
     position: fixed;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 100%;
+    flex-direction: column;
 
     z-index: 1;
     height: 100vh;
     width: 100%;
 }
-
 #text-container{
     width: 100%;
-    height: 30vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100%;
-    animation: changeText 20s linear infinite;
 }
-
 #text-container a{
+    position: fixed;
     text-decoration: none;
     text-shadow: 0px 0px 20px rgb(84, 169, 222),0px 0px 40px rgb(84, 169, 222);
-    margin-top: -30vh;
     font-family: 'Josefin Sans', sans-serif;
     color: white;
     font-size: 10vh;
 }
-
-@keyframes changeText {
+@keyframes moveText {
     0%{
-        transform: translateX(600vh);
+        transform: translateX(300%);
+    }
+    40%{
+        transform: translateX(50%);
+    }
+    60%{
+        transform: translateX(0%);
     }
     100%{
-        transform: translateX(-500vh);
+        transform: translateX(-200%);
     }
+}
+
+/* ------------------------ Metinler Başlangıç ------------------------ */
+#isimtext{display: none; animation-play-state: paused; animation: moveText 10s linear;}
+@keyframes moveisimtext { 0%{transform: translateX(300%);}40%{transform: translateX(50%);}60%{transform: translateX(0%);}100%{transform: translateX(-100%);}}
+#abuttext{display: none; animation-play-state: paused; animation: moveabuttext 15s linear;}
+@keyframes moveabuttext { 0%{transform: translateX(150%);}40%{transform: translateX(20%);}60%{transform: translateX(-10%);}100%{transform: translateX(-150%);}}
+#dctext{display: none; animation-play-state: paused; animation: movedctext 10s linear;}
+@keyframes movedctext { 0%{transform: translateX(300%);}40%{transform: translateX(25%);}60%{transform: translateX(-25%);}100%{transform: translateX(-200%);}}
+#yttext{display: none; animation-play-state: paused; animation: moveyttext 10s linear;}
+@keyframes moveyttext { 0%{transform: translateX(350%);}40%{transform: translateX(50%);}60%{transform: translateX(0%);}100%{transform: translateX(-200%);}}
+#gttext{display: none; animation-play-state: paused; animation: movegctext 10s linear;}
+@keyframes movegctext { 0%{transform: translateX(450%);}40%{transform: translateX(50%);}60%{transform: translateX(0%);}100%{transform: translateX(-400%);}}
+/* ------------------------ Metinler Bitiş ------------------------ */
+
+#bottom-button{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#bottom-button a{
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    color: white;
+    font-size: 5vh;
+    user-select: none;
+    text-shadow: 0px 0px 20px rgb(84, 169, 222),0px 0px 40px rgb(84, 169, 222);
+    transition: 0.3s ease-in-out;
+}
+#bottom-button a:hover{
+    text-shadow: 0px 0px 20px rgb(84, 169, 222),0px 0px 40px rgb(84, 169, 222),0px 0px 50px rgb(30, 0, 161);
+    cursor: pointer;
+}
+#bottom-button a:active{
+    text-shadow: 0px 0px 20px rgb(39, 90, 122),0px 0px 30px rgb(21, 17, 211),0px 0px 50px rgb(21, 17, 211),0px 0px 70px rgb(21, 17, 211);
 }
 
 #araba img{
@@ -52,6 +88,19 @@ body{
     position: fixed;
     width: 200%;
     height: 100vh;
+
+    animation: moveCar 30s ease-in-out infinite;
+}
+@keyframes moveCar {
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(25%);
+    }
+    100%{
+        transform: translateX(0px);
+    }
 }
 
 #yol img{
@@ -62,17 +111,7 @@ body{
     height: 100vh;
     animation: moveRoad 2s linear infinite;
 }
-
-#binalar img{
-    z-index: 0;
-    pointer-events: none;
-    position: fixed;
-    width: 200%;
-    height: 100vh;
-    animation: moveMountains 5s linear infinite;
-}
-
-@keyframes moveMountains {
+@keyframes moveRoad {
     0%{
         transform: translateX(0);
     }
@@ -81,7 +120,15 @@ body{
     }
 }
 
-@keyframes moveRoad {
+#binalar img{
+    z-index: 0;
+    pointer-events: none;
+    position: fixed;
+    width: 200%;
+    height: 100vh;
+    animation: moveBuilds 5s linear infinite;
+}
+@keyframes moveBuilds {
     0%{
         transform: translateX(0);
     }
